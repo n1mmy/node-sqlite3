@@ -91,7 +91,9 @@ const char* sqlite_code_string(int code) {
         case SQLITE_NOTADB:     return "SQLITE_NOTADB";
         case SQLITE_ROW:        return "SQLITE_ROW";
         case SQLITE_DONE:       return "SQLITE_DONE";
-        default:                return "UNKNOWN";
+        default:               
+	// XXX LEAK ZOMG THIS IS BAD
+return sprintf("UNKNOWN_%d", code);
     }
 }
 
